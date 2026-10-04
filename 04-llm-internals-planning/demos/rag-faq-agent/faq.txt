@@ -1,0 +1,29 @@
+Q: What is your return policy?
+A: We offer a 30-day return policy for all unopened items. Products must be returned in original packaging with proof of purchase.
+
+Q: Do you offer international shipping?
+A: Yes, we ship internationally to over 50 countries. Delivery times and shipping costs vary by destination.
+
+Q: How can I contact customer support?
+A: You can reach us via email at support@example.com or call our helpline at +1-800-123-4567. Our support hours are 9AM to 6PM, Monday to Friday.
+
+Q: What payment methods are accepted?
+A: We accept Visa, MasterCard, American Express, PayPal, and UPI payments.
+
+Q: How can I cancel my order?
+A: Orders can be cancelled within 2 hours of placement. Log in to your account, go to "My Orders", and click on "Cancel Order".
+
+Q: Is there a warranty on products?
+A: Yes, all electronic items come with a 1-year manufacturer warranty. Please check the individual product page for warranty specifics.
+
+Q: Can I track my order?
+A: Yes, once your order is shipped, you will receive a tracking link via email and SMS.
+
+Q: What should I do if I receive a damaged product?
+A: If the item is damaged or defective, please contact our support team within 48 hours of delivery for a replacement or refund.
+
+Q: Are there any discounts for bulk purchases?
+A: Yes, we offer special pricing for bulk orders. Please contact sales@example.com for a custom quote.
+
+Q: Do you offer gift wrapping?
+A: Yes, gift wrapping can be added at checkout for an additional ₹50 per item.

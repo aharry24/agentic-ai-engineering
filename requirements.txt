@@ -1,0 +1,16 @@
+# Shared dependencies for the notebooks in this repo.
+# Projects with their own requirements.txt should be installed from that file instead.
+jupyter
+python-dotenv
+pandas
+openai
+anthropic
+langchain
+langchain-openai
+langchain-community
+langgraph
+crewai
+crewai-tools
+tavily-python
+faiss-cpu
+pypdf

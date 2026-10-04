@@ -1,0 +1,7 @@
+langgraph
+crewai
+openai
+langchain
+langchain_community
+langchain-openai
+python-dotenv
