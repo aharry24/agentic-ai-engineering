@@ -29,7 +29,7 @@ Every folder contains code I ran, adapted and documented myself, plus a course-e
 | 05 | [Multi-Agent Systems](05-multi-agent-systems) | CrewAI, LangGraph, A2A protocol, serial/parallel workflows |
 | 06 | Multi-Agent Systems II | AutoGen, n8n |
 | 07 | Model Context Protocol | MCP servers, MCP in n8n |
-| 08–12 | Metrics & ROI · Agentic UX · Dev tools · Azure AI agents · Capstone | |
+| 08–12 | Metrics & ROI · Agentic UX · Dev tools · Azure AI agents · Capstone | TBD |
 
 Certificates for completed modules are in [`certificates/`](certificates).
 
