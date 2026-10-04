@@ -35,7 +35,12 @@ Certificates for completed modules are in [`certificates/`](certificates).
 
 ## Tech stack
 
-**Languages:** Python · **Agent frameworks:** LangGraph, CrewAI, LangChain, Microsoft Agent Framework, AutoGen · **LLMs:** OpenAI / Azure OpenAI, Anthropic Claude · **Retrieval:** FAISS, Chroma, OpenAI and Hugging Face embeddings · **Tools:** Tavily web search, MCP, n8n · **Environment:** Jupyter, Google Colab, VS Code
+**Languages:** Python 
+**Agent frameworks:** LangGraph, CrewAI, LangChain, Microsoft Agent Framework, AutoGen 
+**LLMs:** OpenAI / Azure OpenAI, Anthropic Claude 
+**Retrieval:** FAISS, Chroma, OpenAI and Hugging Face embeddings 
+**Tools:** Tavily web search, MCP, n8n 
+**Environment:** Jupyter, Google Colab, VS Code
 
 ## Run it locally
 
