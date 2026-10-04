@@ -20,16 +20,16 @@ Every folder contains code I ran, adapted and documented myself, plus a course-e
 
 ## Repository map
 
-| # | Module | Topics | Status |
-|---|---|---|---|
-| 01 | [Python Foundations](01-python-foundations) | Data structures, OOP, file and error handling, AI pair-programming with Copilot | Complete |
-| 02 | [Foundations of AI & Agentic AI](02-ai-agentic-foundations) | ML → deep learning → transformers → LLMs → agents | Complete |
-| 03 | [GenAI Tech Stack & Prompt Engineering](03-genai-stack-prompt-engineering) | Agent orchestration frameworks, agentic RAG | In progress |
-| 04 | [LLM Internals & Planning Systems](04-llm-internals-planning) | CoT and ReAct prompting, RAG agents, tool-using agents | In progress |
-| 05 | [Multi-Agent Systems](05-multi-agent-systems) | CrewAI, LangGraph, A2A protocol, serial/parallel workflows | In progress |
-| 06 | Multi-Agent Systems II | AutoGen, n8n | Coming soon |
-| 07 | Model Context Protocol | MCP servers, MCP in n8n | Coming soon |
-| 08–12 | Metrics & ROI · Agentic UX · Dev tools · Azure AI agents · Capstone | | Coming soon |
+| # | Module | Topics |
+|---|---|---|
+| 01 | [Python Foundations](01-python-foundations) | Data structures, OOP, file and error handling, AI pair-programming with Copilot |
+| 02 | [Foundations of AI & Agentic AI](02-ai-agentic-foundations) | ML → deep learning → transformers → LLMs → agents |
+| 03 | [GenAI Tech Stack & Prompt Engineering](03-genai-stack-prompt-engineering) | Agent orchestration frameworks, agentic RAG |
+| 04 | [LLM Internals & Planning Systems](04-llm-internals-planning) | CoT and ReAct prompting, RAG agents, tool-using agents |
+| 05 | [Multi-Agent Systems](05-multi-agent-systems) | CrewAI, LangGraph, A2A protocol, serial/parallel workflows |
+| 06 | Multi-Agent Systems II | AutoGen, n8n |
+| 07 | Model Context Protocol | MCP servers, MCP in n8n |
+| 08–12 | Metrics & ROI · Agentic UX · Dev tools · Azure AI agents · Capstone | |
 
 Certificates for completed modules are in [`certificates/`](certificates).
 
