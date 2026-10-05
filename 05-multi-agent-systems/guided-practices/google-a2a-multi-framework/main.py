@@ -16,9 +16,10 @@ class A2AState(TypedDict, total=False):
 
 ### Define Nodes
 def langchain_node(state):
-    print("state is: ", state)
-    return {"task": state["input"]}
-
+    agent = create_langchain_agent()
+    result = agent.invoke({"messages": [{"role": "user",
+              "content": f"Extract the core task from this request: {state['input']}"}]})
+    return {"task": result["messages"][-1].content}
 
 def crewai_node(state):
     print(" state task is: ", state["task"])
