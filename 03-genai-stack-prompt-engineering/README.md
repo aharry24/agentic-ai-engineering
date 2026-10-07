@@ -10,3 +10,5 @@ The orchestration and application layers of the agentic AI stack: how different 
 | [Agentic RAG with Claude](demos/agentic-rag-anthropic) | A router–retriever RAG system on Claude, with Docling PDF parsing, local Hugging Face embeddings and ChromaDB, so it needs no OpenAI key |
 
 **Skills:** LangGraph · CrewAI · Microsoft Agent Framework · agentic RAG · Anthropic API
+
+**Certificate:** [Generative AI Tech Stack & Prompt Engineering](../certificates/03-generative-ai-tech-stack-and-prompt-engineering.pdf)
