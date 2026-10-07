@@ -10,3 +10,5 @@ Core Python for AI engineering: data structures, control flow, functions, OOP, f
 | [Python Adventure Game with GitHub Copilot](projects/python-adventure-game-copilot) | A text-based adventure game ("Legend of the Lost Treasure") with branching choices, input validation and restart logic, built with Copilot in VS Code. Includes a written report. |
 
 **Skills:** Python data structures · control flow · functions · OOP · error handling · AI-assisted development
+
+**Certificate:** [Foundations of AI & Agentic AI](../certificates/01-python-refresher.pdf)
