@@ -11,4 +11,4 @@ Core Python for AI engineering: data structures, control flow, functions, OOP, f
 
 **Skills:** Python data structures · control flow · functions · OOP · error handling · AI-assisted development
 
-**Certificate:** [Foundations of AI & Agentic AI](../certificates/01-python-refresher.pdf)
+**Certificate:** [Python Foundations](../certificates/01-python-refresher.pdf)
