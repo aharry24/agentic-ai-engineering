@@ -34,8 +34,8 @@ The judge's specific issues become the researcher's feedback on the next attempt
 
 | Provider | Accuracy | Missed searches | Unnecessary searches | Avg seconds |
 |---|---|---|---|---|
-| Claude | | | | |
-| OpenAI | | | | |
+| Claude | 100% | 0 | 0 | 8.3 |
+| OpenAI | 100% | 0 | 0 | 18.5 |
 
 A *missed search* means the agent answered a current-events question from training data, which is the dangerous error. An *unnecessary search* only costs time.
 
