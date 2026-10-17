@@ -1,0 +1,7 @@
+langchain
+langgraph
+langchain-tavily
+langchain-anthropic
+langchain-openai
+pandas
+jupyter
