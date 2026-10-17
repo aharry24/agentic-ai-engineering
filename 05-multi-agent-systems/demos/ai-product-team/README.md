@@ -1,4 +1,4 @@
-# Spec Team
+# Multi Agent Product Team
 
 A MetaGPT-style multi-agent pipeline: six role-specialized Claude agents turn one business brief into a complete product specification, then review and revise their own work.
 
