@@ -1,0 +1,4 @@
+crewai[anthropic]
+requests
+nest_asyncio
+jupyter
