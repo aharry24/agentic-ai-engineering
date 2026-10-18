@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "a2a-research"
+version = "1.0.0"
+description = "Multi-agent research over Google's A2A protocol: LangChain, CrewAI and a plain-SDK agent coordinated by LangGraph"
+readme = "README.md"
+requires-python = ">=3.10"
+
+[project.scripts]
+a2a-research = "a2a_research.main:main"
+a2a-serve = "a2a_research.serve:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]

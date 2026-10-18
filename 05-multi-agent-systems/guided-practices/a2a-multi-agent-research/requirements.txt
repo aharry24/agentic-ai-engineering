@@ -1,0 +1,16 @@
+# A2A multi-agent research: dependencies for src/, both notebooks and the tests.
+# src/ and notebook 1 implement the A2A protocol with the Python standard library.
+# Notebook 2 uses the official SDK, pinned because its API changed in 1.0.
+a2a-sdk[http-server]==1.2.2
+uvicorn
+httpx
+langgraph
+langchain-core
+langchain-openai
+langchain-anthropic
+crewai[anthropic]
+openai
+anthropic
+tavily-python
+python-dotenv
+pytest
