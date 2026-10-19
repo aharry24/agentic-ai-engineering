@@ -1,4 +1,4 @@
-# RAG Pipeline: PDF Chunking and Retrieval (Course-End Project)
+# RAG Pipeline: PDF Chunking and Retrieval
 
 An AI document assistant that loads long PDF reports, chunks them, embeds the chunks with OpenAI, stores them in FAISS, and answers questions with semantic search plus GPT.
 
