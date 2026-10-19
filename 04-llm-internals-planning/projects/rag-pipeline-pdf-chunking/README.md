@@ -34,12 +34,12 @@ rag_project/
 ## How to run (Google Colab)
 No local setup is needed. The Colab notebook installs its own packages and keeps its files in your Google Drive.
 
-1. Go to [colab.research.google.com](https://colab.research.google.com) and choose **File → Upload notebook**, then pick `rag_pipeline_colab.ipynb`.
+1. Go to [colab.research.google.com](https://colab.research.google.com) and choose **File → Upload notebook**, then pick `rag_pipeline.ipynb`.
 2. Add your API key: click the 🔑 **Secrets** icon in the left sidebar, add a secret named `OPENAI_API_KEY`, paste your key, and switch **Notebook access** on. (If you skip this, the notebook asks for the key when it runs.)
 3. Add the PDFs, either way works:
    - Upload `uber_2021.pdf`, `lyft_2021.pdf` and `uber_10q_sept_2022.pdf` to `MyDrive/rag_project/data/pdfs/` in Google Drive, or
    - Leave that folder empty. The notebook shows an upload button when it reaches Section 1.
-4. To generate `Project_Report.md`, upload `report/report_template.md` to `MyDrive/rag_project/report/`. Without it, the notebook still saves the metrics and sample outputs and skips the report.
+4. To generate `Project_Report.md`, upload it to `MyDrive/rag_project/report/`. Without it, the notebook still saves the metrics and sample outputs and skips the report.
 5. Click **Runtime → Run all**. Allow Google Drive access when Colab asks.
    The first run embeds about 3,000 chunks (roughly 650k tokens, around $0.02 with `text-embedding-3-small`). The FAISS index is saved to Drive, so later runs load it instead of re-embedding.
 6. Get the results from `MyDrive/rag_project/outputs/` and `report/`, or run the last cell to download them as a zip.
