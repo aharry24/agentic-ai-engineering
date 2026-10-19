@@ -24,7 +24,7 @@ Financial filings make a realistic, demanding test. They mix narrative text (ris
 
 | Stage | Tool | Configuration |
 |---|---|---|
-| Environment | VS Code, Python virtual environment, Jupyter notebook | `requirements.txt`, API key in `.env` |
+| Environment | VS Code/Google Colab, Python virtual environment, Jupyter notebook, Colab Secrets | `requirements.txt`, API key in `.env` or in Colab Secrets |
 | Load | LangChain `PyPDFLoader` | One Document per page, with `source` and `page` metadata |
 | Chunk | LangChain `RecursiveCharacterTextSplitter` | chunk_size = 1000 chars, overlap = 200, separators ¶ → line → sentence → word |
 | Embed | OpenAI `{{EMBEDDING_MODEL}}` via `langchain-openai` | {{EMBED_DIM}}-dimensional vectors, batched 500 per request |
