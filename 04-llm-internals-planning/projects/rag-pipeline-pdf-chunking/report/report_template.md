@@ -27,10 +27,10 @@ Financial filings make a realistic, demanding test. They mix narrative text (ris
 | Environment | VS Code/Google Colab, Python virtual environment, Jupyter notebook, Colab Secrets | `requirements.txt`, API key in `.env` or in Colab Secrets |
 | Load | LangChain `PyPDFLoader` | One Document per page, with `source` and `page` metadata |
 | Chunk | LangChain `RecursiveCharacterTextSplitter` | chunk_size = 1000 chars, overlap = 200, separators ¶ → line → sentence → word |
-| Embed | OpenAI `{{EMBEDDING_MODEL}}` via `langchain-openai` | {{EMBED_DIM}}-dimensional vectors, batched 500 per request |
+| Embed | OpenAI `text-embedding-3-small` via `langchain-openai` | {{EMBED_DIM}}-dimensional vectors, batched 500 per request |
 | Store | FAISS (`faiss-cpu`) via LangChain | Flat L2 index, saved to `vectorstore/faiss_index` and reloaded on later runs |
 | Retrieve | `similarity_search_with_score` | Top-k nearest chunks; L2 distance converted to cosine similarity |
-| Generate | OpenAI `{{CHAT_MODEL}}` | Temperature 0; prompt restricts answers to the retrieved context and requires (file, page) citations |
+| Generate | OpenAI `gpt-4o-mini` | Temperature 0; prompt restricts answers to the retrieved context and requires (file, page) citations |
 
 **Flow:** PDFs → pages → chunks → embeddings → FAISS index → query embedding → top-k chunks → GPT answer with citations.
 
@@ -40,10 +40,10 @@ Financial filings make a realistic, demanding test. They mix narrative text (ris
 
 | Metric | Value |
 |---|---|
-| Total pages | {{PAGES}} |
-| Total chunks | **{{TOTAL_CHUNKS}}** |
-| Average chunk size | **{{AVG_CHUNK_SIZE}} characters** |
-| Min / max chunk size | {{MIN_CHUNK}} / {{MAX_CHUNK}} characters |
+| Total pages | **643** |
+| Total chunks | **3453** |
+| Average chunk size | **863 characters** |
+| Min / max chunk size | **55 / 1000 characters** |
 
 | Document | Chunks | Avg. chunk size (chars) |
 |---|---|---|
@@ -53,11 +53,37 @@ The average sits a little below the 1,000-character limit. That's expected: the 
 
 **Sample query output**
 
-- **Query:** {{SAMPLE_QUERY}}
-- **Top match:** {{TOP_SOURCE}} (cosine similarity {{TOP_SCORE}})
+- **Query:** What were Uber's total revenues for 2021 and how did they change from 2020?
+- **Top match:** Source: uber_2021.pdf, page 57, cosine similarity = **0.7574**
 
 ```
-{{TOP_CHUNK}}
+Chunk:
+def retrieve(query, k=3, show=True):
+    results = vectorstore.similarity_search_with_score(query, k=k)
+    rows = []
+    for rank, (doc, dist) in enumerate(results, 1):
+        rows.append({
+            "rank": rank,
+            "source": Path(doc.metadata["source"]).name,
+            "page": doc.metadata["page"] + 1,
+            "l2_distance": round(float(dist), 4),
+            "cosine_sim": round(1 - float(dist) / 2, 4),
+            "text": doc.page_content,
+        })
+    if show:
+        print(f"QUERY: {query}\n")
+        for r in rows:
+            print(f"#{r['rank']}  {r['source']}  p.{r['page']}  cos={r['cosine_sim']}")
+    return rows
+
+sample_query = "What were Uber's total revenues for 2021 and how did they change from 2020?"
+sample_results = retrieve(sample_query)
+
+top = sample_results[0]
+print("\n" + "=" * 100)
+print(f"TOP MATCHING CHUNK  ({top['source']}, page {top['page']}, cosine similarity {top['cosine_sim']})")
+print("=" * 100)
+print(top["text"])
 ```
 
 **GPT answer generated from the retrieved chunks:**
