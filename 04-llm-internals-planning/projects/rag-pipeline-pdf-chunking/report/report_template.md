@@ -4,7 +4,7 @@
 
 **Objective.** Build the retrieval core of an AI document assistant. It should take long PDF documents, split them into searchable chunks, embed them with OpenAI, index them in FAISS, and return the passages most relevant to a user's question. A GPT model then answers the question grounded in those passages.
 
-**Why RAG matters.** Large language models don't know anything about private or recent documents, and when asked about them they tend to make up plausible-sounding answers. Retrieval-Augmented Generation (RAG) fixes this without retraining the model. At question time the system retrieves the relevant passages from a trusted document collection and passes them to the model as context. The results:
+**Why RAG matters.** Large language models don't know anything about private or recent documents, and when asked about them they tend to make up plausible-sounding answers. Retrieval-Augmented Generation (RAG) fixes this without retraining the model. When asked, the system retrieves the relevant passages from a trusted document collection and passes them to the model as context. The results:
 
 - answers grounded in the actual source text, with page-level citations the user can verify;
 - up-to-date knowledge: adding a new document only means embedding it, not fine-tuning;
