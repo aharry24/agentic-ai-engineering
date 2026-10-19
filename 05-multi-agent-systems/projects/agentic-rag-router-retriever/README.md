@@ -1,7 +1,5 @@
 # Agentic RAG: Router–Retriever System with PDF and Web Search Tools
 
-Course-end project — Alron Harry
-Notebook: `Agentic_RAG_Router_Retriever.ipynb`
 
 ## 1. What it does
 
