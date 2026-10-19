@@ -13,7 +13,6 @@ rag_project/
 ├── outputs/                   # metrics.json + sample_outputs.md (created on run)
 ├── vectorstore/faiss_index/   # saved FAISS index (created on run)
 └── report/
-    ├── report_template.md     # report text with metric placeholders
     └── Project_Report.md      # final report, filled in automatically on run
 ```
 
