@@ -1,6 +1,6 @@
 # Sample Query Outputs
 
-## What were Uber's total revenues for 2021 and how did they change from 2020?
+## 1. What were Uber's total revenues for 2021 and how did they change from 2020?
 
 | Rank | Source | Page | Cosine sim. |
 |---|---|---|---|
@@ -29,7 +29,7 @@ $ 11,139 $ 17,455 57 % 2021
 
 **GPT answer:** Uber's total revenues for 2021 were $17,455 million, which represented a 57% increase from 2020, where revenues were $11,139 million (uber_2021.pdf, page 57).
 
-## What risks does Lyft describe about drivers being classified as employees instead of independent contractors?
+## 2. What risks does Lyft describe about drivers being classified as employees instead of independent contractors?
 
 | Rank | Source | Page | Cosine sim. |
 |---|---|---|---|
@@ -51,7 +51,7 @@ s and other legal and regulatory proceedings at the federal, state and municipal
 
 **GPT answer:** Lyft describes that it is regularly subject to claims, lawsuits, arbitration proceedings, administrative actions, government investigations, and other legal and regulatory proceedings challenging the classification of drivers as independent contractors. The unpredictability of legal proceedings means that there may be an exposure to a material loss in excess of the amount recorded until the final resolution of these matters (lyft_2021.pdf, page 108).
 
-## How many Monthly Active Platform Consumers did Uber have in the third quarter of 2022?
+## 3. How many Monthly Active Platform Consumers did Uber have in the third quarter of 2022?
 
 | Rank | Source | Page | Cosine sim. |
 |---|---|---|---|
@@ -82,7 +82,7 @@ Mobility Adjusted EBITDA $ 544 $ 898 65 %
 
 **GPT answer:** Uber had 124 Monthly Active Platform Consumers (MAPCs) in the third quarter of 2022 (uber_10q_sept_2022.pdf, page 37).
 
-## How did Lyft's revenue and net loss change in 2021?
+## 4. How did Lyft's revenue and net loss change in 2021?
 
 | Rank | Source | Page | Cosine sim. |
 |---|---|---|---|
@@ -118,7 +118,7 @@ luted$ (3.02) $ (5.61) $ (11.44) Weighted-average numb
 
 **GPT answer:** In 2021, Lyft's revenue increased to $3,208,323 thousand from $2,364,681 thousand in 2020. However, the net loss decreased to $1,009,359 thousand in 2021 from $1,752,857 thousand in 2020 (lyft_2021.pdf, pages 79-80).
 
-## What does Uber say about the impact of COVID-19 on its Mobility business?
+## 5. What does Uber say about the impact of COVID-19 on its Mobility business?
 
 | Rank | Source | Page | Cosine sim. |
 |---|---|---|---|
