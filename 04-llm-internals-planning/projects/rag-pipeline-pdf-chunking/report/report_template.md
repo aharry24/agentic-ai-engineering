@@ -57,12 +57,11 @@ The average sits a little below the 1,000-character limit. That's expected: the 
 
 - **Query:** What were Uber's total revenues for 2021 and how did they change from 2020?
 - **Top match:**
-  - Source: *uber_2021.pdf*,
+  - Source: *uber_2021.pdf*
   - Page: _57_
   - cosine similarity: *0.7574*
-
-
-Top Chunk:
+  - Top Chunk:
+  
 ```
 ments— % — % Net loss including non-controlling interests
 (61) % (3) % Less: net loss attributab
