@@ -11,8 +11,6 @@ rag_project/
 ├── requirements.txt
 ├── .env.example               # copy to .env and add OPENAI_API_KEY
 ├── outputs/                   
-    └── metrics.json           # created on run
-    └── sample_outputs.md      # created on run
 ├── vectorstore/faiss_index/   # saved FAISS index (created on run)
 └── report/
     └── Project_Report.md      # final report, filled in automatically on run
