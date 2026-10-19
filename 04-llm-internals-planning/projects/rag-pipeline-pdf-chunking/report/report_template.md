@@ -47,7 +47,9 @@ Financial filings make a realistic, demanding test. They mix narrative text (ris
 
 | Document | Chunks | Avg. chunk size (chars) |
 |---|---|---|
-{{PER_DOC_TABLE}}
+lyft_2021.pdf	| 1172 |	852.2
+uber_10q_sept_2022.pdf	| 589	| 877.2
+uber_2021.pdf	| 1692	| 865.5
 
 The average sits a little below the 1,000-character limit. That's expected: the splitter cuts at the last natural boundary (paragraph, line or sentence) before the limit rather than mid-word, and short pages produce short final chunks.
 
