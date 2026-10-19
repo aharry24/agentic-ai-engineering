@@ -10,7 +10,7 @@
 - up-to-date knowledge: adding a new document only means embedding it, not fine-tuning;
 - efficiency: the model reads a few relevant chunks instead of hundreds of pages, which may exceed its context window anyway.
 
-**Dataset.** Three real, long, publicly filed SEC reports (643 pages in total):
+**Dataset.** Three real, long, publicly filed SEC reports (**643** pages in total):
 
 | File | Document |
 |---|---|
