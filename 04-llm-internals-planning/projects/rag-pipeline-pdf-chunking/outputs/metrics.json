@@ -1,0 +1,30 @@
+{
+  "documents": 3,
+  "pages": 643,
+  "chunk_size": 1000,
+  "chunk_overlap": 200,
+  "total_chunks": 3453,
+  "avg_chunk_size": 863.0,
+  "min_chunk_size": 55,
+  "max_chunk_size": 1000,
+  "per_document": [
+    {
+      "source": "lyft_2021.pdf",
+      "chunks": 1172,
+      "avg_chars": 852.2
+    },
+    {
+      "source": "uber_10q_sept_2022.pdf",
+      "chunks": 589,
+      "avg_chars": 877.2
+    },
+    {
+      "source": "uber_2021.pdf",
+      "chunks": 1692,
+      "avg_chars": 865.5
+    }
+  ],
+  "embedding_model": "text-embedding-3-small",
+  "embedding_dim": 1536,
+  "chat_model": "gpt-4o-mini"
+}
