@@ -7,11 +7,12 @@ An AI document assistant that loads long PDF reports, chunks them, embeds the ch
 rag_project/
 ├── data/pdfs/                 # the 3 test documents (Uber & Lyft SEC filings)
 ├── rag_pipeline.ipynb         # main notebook: all steps, commented
-├── rag_pipeline_colab.ipynb   # same notebook, set up for Google Colab
 ├── rag_pipeline.py            # same code as a plain script
 ├── requirements.txt
 ├── .env.example               # copy to .env and add OPENAI_API_KEY
-├── outputs/                   # metrics.json + sample_outputs.md (created on run)
+├── outputs/                   
+    └── metrics.json           # created on run
+    └── sample_outputs.md      # created on run
 ├── vectorstore/faiss_index/   # saved FAISS index (created on run)
 └── report/
     └── Project_Report.md      # final report, filled in automatically on run
