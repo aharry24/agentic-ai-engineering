@@ -103,7 +103,7 @@ More queries, with their top-3 matches and answers, are in `outputs/sample_outpu
 
 **Possible improvements**
 
-- Metadata filtering (e.g. restrict by `source` or company) and adding the company name and section title to each chunk.
+- Metadata filtering (e.g. restrict by source or company) and adding the company name and section title to each chunk.
 - Hybrid search (BM25 keyword + vector) and a re-ranker (e.g. a cross-encoder) to improve precision on numeric and exact-term queries.
 - Table-aware parsing (e.g. `pdfplumber`, `unstructured`, or a layout model) so tables are chunked as whole units.
 - Tuning chunk size and overlap and measuring the effect with a small labelled question set (hit-rate@k, MRR).
