@@ -54,41 +54,30 @@ The average sits a little below the 1,000-character limit. That's expected: the 
 **Sample query output**
 
 - **Query:** What were Uber's total revenues for 2021 and how did they change from 2020?
-- **Top match:** Source: uber_2021.pdf, page 57, cosine similarity = **0.7574**
+- **Top match:** Source: *uber_2021.pdf*, page 57, cosine similarity = **0.7574**
 
+
+Top Chunk:
 ```
-Chunk:
-def retrieve(query, k=3, show=True):
-    results = vectorstore.similarity_search_with_score(query, k=k)
-    rows = []
-    for rank, (doc, dist) in enumerate(results, 1):
-        rows.append({
-            "rank": rank,
-            "source": Path(doc.metadata["source"]).name,
-            "page": doc.metadata["page"] + 1,
-            "l2_distance": round(float(dist), 4),
-            "cosine_sim": round(1 - float(dist) / 2, 4),
-            "text": doc.page_content,
-        })
-    if show:
-        print(f"QUERY: {query}\n")
-        for r in rows:
-            print(f"#{r['rank']}  {r['source']}  p.{r['page']}  cos={r['cosine_sim']}")
-    return rows
-
-sample_query = "What were Uber's total revenues for 2021 and how did they change from 2020?"
-sample_results = retrieve(sample_query)
-
-top = sample_results[0]
-print("\n" + "=" * 100)
-print(f"TOP MATCHING CHUNK  ({top['source']}, page {top['page']}, cosine similarity {top['cosine_sim']})")
-print("=" * 100)
-print(top["text"])
+ments— % — % Net loss including non-controlling interests
+(61) % (3) % Less: net loss attributab
+le to non-controlling interests, net of tax— % — % Net loss attributable to Uber Technologies, Inc.
+(61) % (3) %  Totals of percentage of 
+revenues may not foot due to rounding.Comparison of the Years Ended December 31, 2020 and 2021
+Revenue
+Year Ended December 31,
+2020 to 2021 % Change
+(In millions, except percentages)2020 2021 Revenue
+$ 11,139 $ 17,455 57 % 2021
+ Compared to 2020 Revenue
+ increased $6.3 billion, or 57%, primarily attributable to an increase in Gross Bookings of 56%, or 53% on a constant currency basis. The increase inGross
+ Bookings was primarily driven by an increase in Delivery Gross Bookings of 71%, or 66% on a constant currency basis, due to an increase in food deliveryorders
+ and  higher  basket  sizes  as  a  result  of  stay-at-home  order  demand  related  to  COVID-19,  as  well  as  continued  expansion  across  U.S.  and  internationalmarkets.
 ```
 
 **GPT answer generated from the retrieved chunks:**
 
-> {{GPT_ANSWER}}
+> *Uber's total revenues for 2021 were $17,455 million, which represented a 57% increase from 2020, where revenues were $11,139 million (uber_2021.pdf, page 57).*
 
 More queries, with their top-3 matches and answers, are in `outputs/sample_outputs.md`.
 
