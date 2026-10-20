@@ -1,0 +1,8 @@
+# Agentic RAG Router–Retriever: dependencies (match the notebook's install cell)
+crewai>=0.100
+crewai-tools>=0.33
+langchain-community
+tavily-python
+pypdf
+pandas
+matplotlib
