@@ -1,0 +1,127 @@
+2026-10-20 02:50:15: task_name="None", task="Original user question: "What BLEU score did the Transformer achieve on the WMT 2014 English-to-German translation task?"
+Today's date: October 20, 2026.
+Router decision: route=pdf; reason=The BLEU score reported in the paper is a fixed result from a past event, specifically the performance of the Transformer on the WMT 2014 English-to-German translation task. Therefore, it is not time-sensitive. The section '6.1 Machine Translation' covers the results of the Transformer model, including BLEU scores.
+
+Use the `transformer_paper_search` tool with the query "WMT 2014 English-to-German BLEU score Transformer" (you may refine and search again at most twice). Base your answer ONLY on the retrieved text.
+If the evidence does not answer the question, reply with exactly 'INSUFFICIENT_EVIDENCE' followed by one sentence explaining what is missing.
+End with a 'Sources:' section listing the paper sections/passages used.", agent="Retrieval Specialist", status="started"
+2026-10-20 02:50:21: task_name="None", task="Original user question: "What BLEU score did the Transformer achieve on the WMT 2014 English-to-German translation task?"
+Today's date: October 20, 2026.
+Router decision: route=pdf; reason=The BLEU score reported in the paper is a fixed result from a past event, specifically the performance of the Transformer on the WMT 2014 English-to-German translation task. Therefore, it is not time-sensitive. The section '6.1 Machine Translation' covers the results of the Transformer model, including BLEU scores.
+
+Use the `transformer_paper_search` tool with the query "WMT 2014 English-to-German BLEU score Transformer" (you may refine and search again at most twice). Base your answer ONLY on the retrieved text.
+If the evidence does not answer the question, reply with exactly 'INSUFFICIENT_EVIDENCE' followed by one sentence explaining what is missing.
+End with a 'Sources:' section listing the paper sections/passages used.", agent="Retrieval Specialist", status="completed", output="The Transformer model achieved a BLEU score of 28.4 on the WMT 2014 English-to-German translation task. This score was reported as a new state-of-the-art, outperforming the best previously reported models by more than 2.0 BLEU points. The training for this model took 3.5 days on 8 NVIDIA P100 GPUs.
+
+Sources:
+- Section 6.1 Machine Translation
+- Table 2"
+2026-10-20 02:50:23: task_name="None", task="Original user question: "How does multi-head attention work, and how many heads did the base model use?"
+Today's date: October 20, 2026.
+Router decision: route=pdf; reason=The answer to how multi-head attention works and the number of heads used in the base model is not time-sensitive as these are established facts from the original paper. The relevant section that covers this topic is '3.2.2 Multi-Head Attention'.
+
+Use the `transformer_paper_search` tool with the query "how does multi-head attention work and how many heads in base model" (you may refine and search again at most twice). Base your answer ONLY on the retrieved text.
+If the evidence does not answer the question, reply with exactly 'INSUFFICIENT_EVIDENCE' followed by one sentence explaining what is missing.
+End with a 'Sources:' section listing the paper sections/passages used.", agent="Retrieval Specialist", status="started"
+2026-10-20 02:50:28: task_name="None", task="Original user question: "How does multi-head attention work, and how many heads did the base model use?"
+Today's date: October 20, 2026.
+Router decision: route=pdf; reason=The answer to how multi-head attention works and the number of heads used in the base model is not time-sensitive as these are established facts from the original paper. The relevant section that covers this topic is '3.2.2 Multi-Head Attention'.
+
+Use the `transformer_paper_search` tool with the query "how does multi-head attention work and how many heads in base model" (you may refine and search again at most twice). Base your answer ONLY on the retrieved text.
+If the evidence does not answer the question, reply with exactly 'INSUFFICIENT_EVIDENCE' followed by one sentence explaining what is missing.
+End with a 'Sources:' section listing the paper sections/passages used.", agent="Retrieval Specialist", status="completed", output="Multi-head attention works by linearly projecting the input queries, keys, and values multiple times (h times) with different learned linear projections. Each of these projected versions undergoes the attention function in parallel, allowing the model to jointly attend to information from different representation subspaces at various positions. The outputs from these attention heads are then concatenated and projected to form the final output. This mechanism helps to mitigate the averaging effect that occurs with a single attention head, enhancing the model's ability to capture diverse information.
+
+In the base model of the Transformer, 8 parallel attention heads are employed, with each head using a dimensionality of \(d_k = d_v = d_{model}/h = 64\) (where \(d_{model} = 512\)). This configuration maintains a computational cost similar to that of single-head attention with full dimensionality.
+
+Sources:
+- Section 3.2.2 Multi-Head Attention"
+2026-10-20 02:50:29: task_name="None", task="Original user question: "What are the latest open-weight large language models released this year?"
+Today's date: October 20, 2026.
+Router decision: route=web; reason=The question is time-sensitive because it asks for the latest releases, which can change frequently. There is no section in the paper that specifically covers the topic of open-weight large language models released this year.
+
+Use the `web_search` tool with the query "latest open-weight large language models 2026" (you may refine and search again at most twice). Base your answer ONLY on the retrieved text.
+If the evidence does not answer the question, reply with exactly 'INSUFFICIENT_EVIDENCE' followed by one sentence explaining what is missing.
+End with a 'Sources:' section listing the URLs used.", agent="Retrieval Specialist", status="started"
+2026-10-20 02:50:37: task_name="None", task="Original user question: "What are the latest open-weight large language models released this year?"
+Today's date: October 20, 2026.
+Router decision: route=web; reason=The question is time-sensitive because it asks for the latest releases, which can change frequently. There is no section in the paper that specifically covers the topic of open-weight large language models released this year.
+
+Use the `web_search` tool with the query "latest open-weight large language models 2026" (you may refine and search again at most twice). Base your answer ONLY on the retrieved text.
+If the evidence does not answer the question, reply with exactly 'INSUFFICIENT_EVIDENCE' followed by one sentence explaining what is missing.
+End with a 'Sources:' section listing the URLs used.", agent="Retrieval Specialist", status="completed", output="As of October 2026, several notable open-weight large language models have been released this year:
+
+1. **Qwen 3.7-Max/Plus** and **Qwen3-235B-A22B-Thinking** by Alibaba have emerged as significant players, boasting over 1 trillion parameters and supporting 119 languages. They reportedly outperform GPT-5.5 and Llama-4 Maverick on key benchmarks.
+
+2. **GLM-5.2** from Zhipu AI, released in June 2026, features 744 billion parameters and utilizes a Mixture-of-Experts architecture, making it a powerful addition to the open-weight LLM landscape.
+
+3. **Kimi-K2.6** from Moonshot AI is another recent release, designed for coding with approximately 1 trillion parameters and a context window of up to 256K tokens.
+
+4. **Gemma 4** from Google focuses on multimodal applications and offers a unified model design across text, image, and audio.
+
+5. **Nemotron 3 Ultra** from NVIDIA, announced in June 2026, includes 550 billion parameters and is released under a permissive license.
+
+These models reflect the ongoing advancements in open-weight LLM technology, emphasizing scalability, efficiency, and multimodal capabilities.
+
+Sources:
+- [Shakudo Blog](https://www.shakudo.io/blog/top-9-large-language-models)
+- [BentoML Blog](https://www.bentoml.com/blog/navigating-the-world-of-open-source-large-language-models)
+- [Instaclustr](https://www.instaclustr.com/education/open-source-ai/top-7-open-source-llms-for-2026)
+- [LLM Stats](https://llm-stats.com/llm-updates)"
+2026-10-20 02:50:38: task_name="None", task="Original user question: "Where do the authors of 'Attention Is All You Need' work today?"
+Today's date: October 20, 2026.
+Router decision: route=web; reason=The answer to where the authors work today could change over time as people change jobs, making this question time-sensitive. However, there is no section in the paper that addresses the current affiliations of the authors.
+
+Use the `web_search` tool with the query "Where do the authors of Attention Is All You Need work in 2026?" (you may refine and search again at most twice). Base your answer ONLY on the retrieved text.
+If the evidence does not answer the question, reply with exactly 'INSUFFICIENT_EVIDENCE' followed by one sentence explaining what is missing.
+End with a 'Sources:' section listing the URLs used.", agent="Retrieval Specialist", status="started"
+2026-10-20 02:50:47: task_name="None", task="Original user question: "Where do the authors of 'Attention Is All You Need' work today?"
+Today's date: October 20, 2026.
+Router decision: route=web; reason=The answer to where the authors work today could change over time as people change jobs, making this question time-sensitive. However, there is no section in the paper that addresses the current affiliations of the authors.
+
+Use the `web_search` tool with the query "Where do the authors of Attention Is All You Need work in 2026?" (you may refine and search again at most twice). Base your answer ONLY on the retrieved text.
+If the evidence does not answer the question, reply with exactly 'INSUFFICIENT_EVIDENCE' followed by one sentence explaining what is missing.
+End with a 'Sources:' section listing the URLs used.", agent="Retrieval Specialist", status="completed", output="As of 2026, the authors of "Attention Is All You Need" have moved on from their original positions at Google and have taken on various roles in the tech industry. Ashish Vaswani co-founded Essential AI, which was acqui-hired by Nvidia in June 2026. Noam Shazeer and Niki Parmar are also noted for their contributions to AI startups, with Shazeer being involved in various AI projects. The other authors, including Jakob Uszkoreit, Llion Jones, Aidan Gomez, Łukasz Kaiser, and Illia Polosukhin, have similarly transitioned to different companies or founded their own ventures, contributing significantly to the AI landscape post-Google.
+
+Sources:
+- [Wikipedia](https://en.wikipedia.org/wiki/Attention_Is_All_You_Need)
+- [Meditatist](https://meditatist.com/who-are-the-authors-behind-attention-is-all-you-need)
+- [Learn Internet Grow](https://www.learninternetgrow.com/attention-is-all-you-need-authors)
+- [Wikipedia - Ashish Vaswani](https://en.wikipedia.org/wiki/Ashish_Vaswani)"
+2026-10-20 02:50:48: task_name="None", task="Original user question: "In one sentence, what does RAG stand for in AI?"
+Today's date: October 20, 2026.
+Router decision: route=llm; reason=The question asks for the definition of an acronym, which is a fixed fact and not time-sensitive. There is no section in the provided table of contents that specifically covers the acronym RAG in AI.
+
+Answer directly from your own knowledge. Be concise and accurate.
+If the evidence does not answer the question, reply with exactly 'INSUFFICIENT_EVIDENCE' followed by one sentence explaining what is missing.
+Write 'Sources: LLM general knowledge (no retrieval)'.", agent="Retrieval Specialist", status="started"
+2026-10-20 02:50:49: task_name="None", task="Original user question: "In one sentence, what does RAG stand for in AI?"
+Today's date: October 20, 2026.
+Router decision: route=llm; reason=The question asks for the definition of an acronym, which is a fixed fact and not time-sensitive. There is no section in the provided table of contents that specifically covers the acronym RAG in AI.
+
+Answer directly from your own knowledge. Be concise and accurate.
+If the evidence does not answer the question, reply with exactly 'INSUFFICIENT_EVIDENCE' followed by one sentence explaining what is missing.
+Write 'Sources: LLM general knowledge (no retrieval)'.", agent="Retrieval Specialist", status="completed", output="RAG stands for "Retrieval-Augmented Generation" in AI, which refers to a model architecture that combines retrieval of relevant information from a database with generative capabilities to produce more informed and contextually relevant outputs. This approach enhances the performance of language models by allowing them to access external knowledge sources during the generation process.
+
+Sources: LLM general knowledge (no retrieval)"
+2026-10-20 02:50:51: task_name="None", task="Original user question: "What learning-rate schedule was used to train the Transformer?"
+Today's date: October 20, 2026.
+Router decision: route=pdf; reason=The learning-rate schedule used to train the Transformer is a fixed detail from the paper and does not change over time, making it not time-sensitive. It is covered in the section about the optimizer used in training.
+
+Use the `transformer_paper_search` tool with the query "Transformer learning rate schedule" (you may refine and search again at most twice). Base your answer ONLY on the retrieved text.
+If the evidence does not answer the question, reply with exactly 'INSUFFICIENT_EVIDENCE' followed by one sentence explaining what is missing.
+End with a 'Sources:' section listing the paper sections/passages used.", agent="Retrieval Specialist", status="started"
+2026-10-20 02:50:55: task_name="None", task="Original user question: "What learning-rate schedule was used to train the Transformer?"
+Today's date: October 20, 2026.
+Router decision: route=pdf; reason=The learning-rate schedule used to train the Transformer is a fixed detail from the paper and does not change over time, making it not time-sensitive. It is covered in the section about the optimizer used in training.
+
+Use the `transformer_paper_search` tool with the query "Transformer learning rate schedule" (you may refine and search again at most twice). Base your answer ONLY on the retrieved text.
+If the evidence does not answer the question, reply with exactly 'INSUFFICIENT_EVIDENCE' followed by one sentence explaining what is missing.
+End with a 'Sources:' section listing the paper sections/passages used.", agent="Retrieval Specialist", status="completed", output="The learning rate schedule used to train the Transformer model is defined by the formula:
+
+\[ \text{lrate} = d^{-0.5} \cdot \min(\text{step\_num}^{-0.5}, \text{step\_num} \cdot \text{warmup\_steps}^{-1.5}) \]
+
+This schedule involves increasing the learning rate linearly for the first `warmup_steps` (set to 4000) and then decreasing it thereafter proportionally to the inverse square root of the step number. The Adam optimizer was used with specific parameters: \( \beta_1 = 0.9 \), \( \beta_2 = 0.98 \), and \( \epsilon = 10^{-9} \).
+
+Sources:
+- Section 5.3: Optimizer
+- Section 5.4: Regularization"
