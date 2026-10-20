@@ -1,7 +1,5 @@
 # Agentic RAG: Router–Retriever System with PDF and Web Search Tools
 
-**Course-end project** · Alron Harry
-
 A multi-agent Retrieval-Augmented Generation system built with **CrewAI**. A **Router Agent** decides where each question should be answered from: the research paper *Attention Is All You Need* (PDF), the live web, or the LLM's own knowledge. A **Retriever Agent** then retrieves from that source only and writes an answer grounded in the evidence, with its sources.
 
 **Notebook:** [`Agentic_RAG_Router_Retriever.ipynb`](Agentic_RAG_Router_Retriever.ipynb)
