@@ -133,10 +133,7 @@ Example answers:
 *Fix:* extract the table of contents from the PDF with `pypdf` and give it to the Router, with a rule to prefer the PDF whenever a section covers the topic. Headings are accepted only if their section numbers increase, which filters out table rows and references.
 *Trade-off:* the heading rules suit numbered academic papers. A PDF without numbered headings would need a layout-aware parser such as Docling.
 
-**2. Questions that mention the paper but need current facts.** "Where do the authors work today?" names the paper, but the paper can't answer it.
-*Fix:* the time-sensitive `web` rule is applied before the `pdf` rule, as long as the question itself asks about the present (see challenge 3).
-
-**3. The first full run found two routing bugs, both visible in the logs.**
+**2. The first full run found two routing bugs, both visible in the logs.**
 - *The direct-LLM route was never used.* The first version of the `web` rule said "information from after the paper, or current facts". The Router read that broadly: it sent "what is the capital of France?" to the web as a "current fact", and "what does RAG stand for?" to the web because RAG postdates 2017. The routing check scored 7/8, and no demo question took the `llm` route.
 - *Stale search queries.* Asked for models released "this year", the Router wrote a search query for **2023**, its training-data year, so the answer listed 2023 models as the latest.
 
@@ -152,25 +149,14 @@ Example answers:
 
 *Lesson:* LLMs are better at narrow judgements than at applying a list of ordered rules. Put the judgements in the model and the rules in code, check the judgements against what the question actually says, and turn every failure you find into a test case.
 
-**4. Making the routing decision binding.** If the Retriever had both tools, it could ignore the Router.
-*Fix:* the Retriever is created per question with only the routed tool.
-*Trade-off:* a new agent and crew per question adds some overhead.
-
-**5. Unreliable free-text routing.** Parsing a label out of prose is fragile.
+**3. Unreliable free-text routing.** Parsing a label out of prose is fragile.
 *Fix:* `output_pydantic=RouterJudgement` validates the Router's output, and a logged keyword heuristic takes over if parsing fails.
 
-**6. Questions the paper can't answer.** A wrong `pdf` route would otherwise produce a weak answer.
+**4. Questions the paper can't answer.** A wrong `pdf` route would otherwise produce a weak answer.
 *Fix:* the Retriever must reply `INSUFFICIENT_EVIDENCE` rather than guess, and the orchestrator retries once on the web.
 *Trade-off:* a fallback run costs a second retrieval.
 
-**7. Library changes.** Recent CrewAI versions refuse a synchronous `kickoff()` inside the event loop Jupyter and Colab run, so the crews use `kickoff_async()`. CrewAI's interactive "view your execution traces?" prompt can pause a run, so tracing is turned off. `TavilySearchResults` is deprecated in LangChain in favour of `langchain-tavily`, but it is kept because the project brief requires it.
-
-**8. Framework choice: CrewAI.** Its role/goal/backstory model maps directly onto the two agents, `PDFSearchTool` ships with `crewai_tools`, `output_pydantic` gives typed, validated Router output, and its callbacks provide the hooks for tracing. LangGraph would give finer control over the flow but needs more code for a two-step pipeline; AutoGen's conversation-centric design makes "use only the routed tool" harder to enforce.
-*Trade-off:* `PDFSearchTool` hides its chunking and embedding settings, which is simpler but harder to tune or inspect than a hand-built pipeline.
-
-**9. A confidence score that measured nothing.** The Router originally reported a confidence (0–1) for each decision. It was 0.9 on almost every question, including both wrong routes (the BLEU question sent to the web scored 0.9; "capital of France" sent to the web scored 1.0). A number the model writes about its own certainty isn't a measurement, so it was removed rather than shown as if it meant something.
-
-**10. Cost and latency.** Each question makes at least two LLM calls (routing, then retrieval). A small model (`gpt-4o-mini`) keeps this cheap; the Router could later be replaced by a cheaper classifier for obvious cases.
+**5. Cost and latency.** Each question makes at least two LLM calls (routing, then retrieval). A small model (`gpt-4o-mini`) keeps this cheap; the Router could later be replaced by a cheaper classifier for obvious cases.
 
 ## Run it
 
