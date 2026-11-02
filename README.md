@@ -17,6 +17,7 @@ Every folder contains code I ran, adapted and documented myself, plus a course-e
 | [RAG Pipeline: PDF Chunking & Retrieval](04-llm-internals-planning/projects/rag-pipeline-pdf-chunking) | Loads long SEC filings (Uber, Lyft), chunks and embeds them, and answers questions with semantic search | OpenAI embeddings, FAISS, LangChain |
 | [Multi-Framework Analyst → Strategist](03-genai-stack-prompt-engineering/demos/analyst-strategist-multi-framework) | The same two-agent workflow built three ways, to compare orchestration styles | LangGraph, CrewAI, Microsoft Agent Framework |
 | [Agent-to-Agent (A2A) Collaboration](05-multi-agent-systems/guided-practices/google-a2a-multi-framework) | LangChain, CrewAI and a custom OpenAI agent passing work to each other inside one LangGraph graph | LangGraph, A2A, Azure OpenAI |
+| [LinkedIn Content Automation](06-multi-agent-systems-ii/projects/linkedin-content-automation-n8n-autogen) | An n8n workflow calls an AutoGen microservice where agents draft and review LinkedIn posts | n8n, AutoGen, FastAPI |
 
 ## Repository map
 
@@ -42,13 +43,17 @@ Certificates for completed modules are in [`certificates/`](certificates).
 
 **Agent frameworks:** LangGraph, CrewAI, LangChain, Microsoft Agent Framework, AutoGen 
 
-**LLMs:** OpenAI / Azure OpenAI, Anthropic Claude 
+**LLMs:** OpenAI / Azure OpenAI, Anthropic Claude, Google Gemini, Ollama (local) 
 
 **Retrieval:** FAISS, Chroma, OpenAI and Hugging Face embeddings 
 
-**Tools:** Tavily web search, MCP, n8n 
+**Tools:** Tavily, SerpApi, MCP (FastMCP), n8n 
 
-**Environment:** Jupyter, Google Colab, VS Code
+**Observability:** LangSmith, Firestore 
+
+**Design:** Figma, Miro 
+
+**Environment:** Jupyter, Google Colab, VS Code, Cursor, Docker
 
 
 ## Run it locally
