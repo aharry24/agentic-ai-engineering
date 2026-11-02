@@ -13,4 +13,8 @@ crewai
 crewai-tools
 tavily-python
 faiss-cpu
-pypdf
+pypdfautogen[openai]
+fastmcp
+langsmith
+firebase-admin
+tabulate
