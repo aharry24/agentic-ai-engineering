@@ -27,9 +27,12 @@ Every folder contains code I ran, adapted and documented myself, plus a course-e
 | 03 | [GenAI Tech Stack & Prompt Engineering](03-genai-stack-prompt-engineering) | Agent orchestration frameworks, agentic RAG |
 | 04 | [LLM Internals & Planning Systems](04-llm-internals-planning) | CoT and ReAct prompting, RAG agents, tool-using agents |
 | 05 | [Multi-Agent Systems](05-multi-agent-systems) | CrewAI, LangGraph, A2A protocol, serial/parallel workflows |
-| 06 | Multi-Agent Systems II | AutoGen, n8n |
-| 07 | Model Context Protocol | MCP servers, MCP in n8n |
-| 08–12 | Metrics & ROI · Agentic UX · Dev tools · Azure AI agents · Capstone | TBD |
+| 06 | [Multi-Agent Systems II](06-multi-agent-systems-ii) | AutoGen, response-format negotiation, agent chains, n8n | In progress |
+| 07 | [Model Context Protocol](07-model-context-protocol) | MCP servers with FastMCP, MCP tools in n8n | In progress |
+| 08 | [Metrics, GTM & ROI](08-metrics-gtm-roi) | LangSmith tracing, A/B testing prompts, Lean Canvas | In progress |
+| 09 | [Agentic UX Design & Transparency](09-agentic-ux) | Confidence disclosure, reasoning panels, HITL flows in Figma | In progress |
+| 10 | [Dev Tools & Product Readiness](10-dev-tools-product-readiness) | Event logging in Firestore, agent MVP deployment, Ollama | In progress |
+| 11–12 | Azure AI agents · Capstone | | Coming soon |
 
 Certificates for completed modules are in [`certificates/`](certificates).
 
