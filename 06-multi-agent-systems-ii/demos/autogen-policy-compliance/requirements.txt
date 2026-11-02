@@ -1,0 +1,6 @@
+# Policy compliance review with AutoGen (AG2 Classic): dependencies (match the notebook's install cell)
+# Use the classic `autogen` package, not `ag2` (v1.0+ is a different framework with no `autogen` module).
+autogen[openai]
+pandas
+# Colab only: its preinstalled Google libraries need a newer protobuf runtime than Colab ships.
+protobuf>=6.33.5,<7
