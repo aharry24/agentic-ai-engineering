@@ -2,7 +2,7 @@
 
 An agent chain built with [AutoGen AgentChat](https://microsoft.github.io/autogen/) that does code QA automatically. One agent writes a function, a second writes `pytest` tests for it, and the tests run in a separate process with coverage measured. When tests fail, a **Reviewer** agent decides whether each failing test is wrong or the code is, wrong tests are set aside, and a **Debugger** agent fixes the code. Once everything passes, the Tester gets the **coverage report** and adds tests for code that was never run.
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/<your-username>/<your-repo>/blob/main/AutoGen_Code_Testing_Debugging_Chain.ipynb)
+
 
 ## How it works
 
