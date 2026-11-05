@@ -2,8 +2,6 @@
 
 When two AI agents exchange messages, they don't always speak the same data format: one might produce XML, another CSV, while a third only reads JSON. This project shows how agents can still communicate reliably. Each agent **declares** the formats it supports, the two **negotiate** a shared format at runtime, the payload is **converted** automatically between **JSON, XML and CSV** when needed, and if there's no common format the system **fails safely** with a clear, auditable log instead of sending something the receiver can't read.
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/<your-username>/<your-repo>/blob/main/Format_Negotiation_A2A.ipynb)
-
 ## How it works
 
 ```
