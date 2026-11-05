@@ -1,0 +1,8 @@
+# AutoGen Agent Chain for Automated Code Testing, Review and Debugging
+# Install with: pip install -r requirements.txt
+
+autogen-agentchat      # AutoGen AgentChat: AssistantAgent, messages
+autogen-ext[openai]    # OpenAI model client for AutoGen
+pytest                 # Runs the generated tests
+pytest-cov             # Measures statement and branch coverage of solution.py
+jupyter                # Only needed to run the notebook locally (Colab already has it)
