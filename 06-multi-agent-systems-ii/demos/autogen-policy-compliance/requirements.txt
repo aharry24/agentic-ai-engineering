@@ -1,6 +1,7 @@
-# Policy compliance review with AutoGen (AG2 Classic): dependencies (match the notebook's install cell)
-# Use the classic `autogen` package, not `ag2` (v1.0+ is a different framework with no `autogen` module).
-autogen[openai]
-pandas
-# Colab only: its preinstalled Google libraries need a newer protobuf runtime than Colab ships.
-protobuf>=6.33.5,<7
+# AutoGen Multi-Agent Document Compliance Checker
+# Install with: pip install -r requirements.txt
+
+ag2[openai]      # AutoGen framework (imported as `autogen`) with OpenAI support
+openai           # OpenAI Python client
+ipython          # Markdown display of the routing table in the summary
+jupyter          # Only needed to run the notebook locally (Colab already has it)

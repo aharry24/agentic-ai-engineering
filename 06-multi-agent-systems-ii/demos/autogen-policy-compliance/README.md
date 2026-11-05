@@ -1,94 +1,111 @@
-# Policy Compliance Review with AutoGen (AG2 Classic)
+# AutoGen Multi-Agent Document Compliance Checker
 
-A multi-agent system that reviews company policy documents for compliance issues, decides who must act on each document, and **measures its own accuracy** against an answer key of planted issues.
+A multi-agent system built with [AutoGen (AG2)](https://github.com/ag2ai/ag2) that reviews internal company documents for compliance problems, rates their severity, and routes each one to the right reviewer with an action item and a due date. Think of it as an automated document QA team that never sleeps.
 
-The design rule: **code decides what can be checked as a fact; agents handle what needs reading and judgement.**
-
-**Notebook:** [`autogen_policy_compliance.ipynb`](autogen_policy_compliance.ipynb). It runs in Google Colab with an OpenAI key (Azure OpenAI is also supported). The offline tests need no key.
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/<your-username>/<your-repo>/blob/main/AutoGen_Document_Compliance.ipynb)
 
 ## How it works
 
-```
-For each document:
+Four agents work together in an AutoGen `GroupChat`, coordinated by a `GroupChatManager` that picks who speaks next:
 
-  Starter ──▶ Analyst ──tool call──▶ ToolExecutor ──▶ Analyst ──▶ Reviewer ──▶ TERMINATE
-                 │  get_document(doc_id)        (full text)          │
-                 │  get_rule_findings(doc_id)   (rule results)       │ removes duplicates,
-                 ▼                                                   │ weak or unsupported findings
-           draft JSON findings, each with an exact quote             ▼
-                                                              final JSON findings
-                                                                     │
-  Code ─────────────────────────────────────────────────────────────┤
-    • verify every quote against the document (reject if absent)    │
-    • add the rule-engine findings                                   │
-    • severity per issue type, routing by the most severe issue     ▼
-                                                     report: findings.csv · routing.csv · report.json
+| Agent | Role |
+|---|---|
+| **DocumentScanner** | Extracts metadata (ID, title, type, last updated) and categorizes each document as HR, Technical, or Operational |
+| **ComplianceChecker** | Finds issues such as missing sections, missing signatures, and outdated references, and rates each as Critical, Major, or Minor |
+| **ReviewCoordinator** | Routes each document by severity and sets due dates, then produces a routing table and an audit trail |
+| **UserProxy** | Stands in for the human user and starts the workflow |
+
+```
+New documents ──► DocumentScanner ──► ComplianceChecker ──► ReviewCoordinator ──► Summary report
+                    (metadata)          (issues + severity)    (routing + deadlines)
 ```
 
-| Part | Done by | Why |
+### Routing rules
+
+| Severity | Routed to | Due in |
 |---|---|---|
-| Required sections, signatures, document age | **Code** (`check_rules`, from a rules table per document type) | Yes/no facts: code is consistent and never misses one |
-| Outdated references, weak controls, contradictions | **Analyst agent**, reading the full document through tools | Needs reading and reasoning |
-| Quality control | **Reviewer agent** (maker–checker), then **code** checks every quoted piece of evidence | A finding that can't be quoted from the document is never reported |
-| Severity and routing | **Code** (`SEVERITY`, `ROUTES`) | Who must act shouldn't depend on an LLM's mood |
+| 🔴 Critical | Legal / Executive review | 3 days |
+| 🟠 Major | Department head | 14 days |
+| 🟡 Minor | Document owner | 30 days |
 
-**AutoGen features used:** `AssistantAgent` and `UserProxyAgent`; tool calling with `register_function` (a caller agent and an executor agent); a `GroupChat` with a **custom speaker-selection function**, so every review follows the same path and ends when the Reviewer finishes.
+### Design choices
 
-## Routing
+- **Clear agent roles.** Each agent's system message says what it must *not* do, so agents don't overlap.
+- **A fixed output format.** The ReviewCoordinator must return one table with exactly six columns, so the result can be read by code.
+- **Automatic stop.** The ReviewCoordinator ends its message with `TERMINATE`, which tells both the UserProxy and the manager to stop. The run doesn't need anyone to type anything.
+- **A summary built from the run.** The final report reads the ReviewCoordinator's message from the chat history and shows its routing table. It counts documents by severity by finding the Severity column from the table's header row, so the count still works if the model changes how it fills the other columns. Nothing in the summary is hard-coded.
+- **Consistent results.** Setting `temperature: 0` makes severity ratings and findings repeatable from run to run, and in testing it stopped the model inventing issues that weren't there.
 
-| Most severe issue | Routing |
-|---|---|
-| Critical (weak security control) | Escalate to Legal & Executive review |
-| Major (missing section or signature, contradiction) | Route to department head for approval |
-| Minor (stale document, outdated reference) | Send revision request to document owner |
-| None | No action: compliant |
+## Sample documents
 
-## Evaluation
+The notebook includes three sample documents, each with problems planted on purpose:
 
-Five synthetic policies contain **11 planted issues**: 5 rule issues (missing sections, a missing signature, stale documents) and 6 judgement issues (outdated references, weak controls, contradictions). One document is deliberately **compliant**, to catch false positives.
-
-The scorecard compares three approaches on the same documents:
-
-| Approach | What it is |
-|---|---|
-| Rules only | The code rule engine alone |
-| Single LLM call | One prompt with all documents and the rules, no agents and no rule engine |
-| Agents + rules | This system |
-
-It reports recall on rule issues and on judgement issues, findings outside the answer key, findings on the compliant document, and quotes that aren't in the document.
-
-**Results:** see Step 10 of the notebook. *(Add your run's scorecard here.)*
-
-## What changed from the course demo
-
-The original Module 6 demo ran three agents in an automatic group chat. Its run showed several problems, each of which this version fixes:
-
-| Problem in the original | Fix |
-|---|---|
-| Documents were cut to 200 characters, so the missing signature and review date were never seen | Agents read the full document through a tool |
-| An agent reported the task instructions as "workflow notes in the document" | Every finding must quote the document; code rejects quotes that aren't there |
-| The summary printed fixed "key findings" whatever the agents found | The report is built from the actual findings |
-| One agent spoke five times in a row, four times with an empty reply; the chat ended only at the round limit | A custom speaker-selection function sets the order; the Reviewer ends the chat. No low output-token limit, which reasoning models can use up before replying |
-| The compliance rules and the monitoring functions were defined but never used | The rules table drives the rule engine; the unused monitoring stub was removed |
-| The coordinator agent invented notifications, IDs and deadlines | Severity and routing are decided in code; nothing is claimed that the system didn't do |
-| Azure endpoint and resource name hard-coded | OpenAI by default; Azure settings come from Colab secrets |
+- **DOC001: Employee Remote Work Policy (HR).** Has no approval section and refers to superseded 2021 guidelines.
+- **DOC002: Data Security Manual (Technical).** Is missing its Incident Response and Data Retention sections.
+- **DOC003: Customer Service Guidelines (Operational).** Has no signature and no review date, and relies on a 2019 handbook.
 
 ## Run it
 
-1. Open the notebook in Google Colab.
-2. Add `OPENAI_API_KEY` under **Secrets** (🔑) with notebook access on. For Azure, set `PROVIDER = "azure"` in Step 5 and add `AZURE_OPENAI_API_KEY`, `AZURE_OPENAI_ENDPOINT` and `AZURE_OPENAI_DEPLOYMENT`.
-3. Run all cells. Without a key, Steps 1–4 still run the offline tests.
+1. Open the notebook in Google Colab (use the badge above, or upload `AutoGen_Document_Compliance.ipynb`).
+2. Click the 🔑 **Secrets** icon in the left sidebar, add `OPENAI_API_KEY` with your OpenAI key, and turn on **Notebook access**.
+3. Choose **Runtime → Run all**.
 
-Outputs are written to `outputs/`: `findings.csv`, `routing.csv` and `report.json`.
+The notebook uses `gpt-4o-mini` with `temperature: 0`, and one run costs a fraction of a cent. To use a different model, change `"model"` in Step 3.
 
-**Stack:** AutoGen / AG2 Classic (`autogen` package, classic `autogen` API) · OpenAI or Azure OpenAI · pandas
+### Run locally instead
 
-**Package note:** install `autogen[openai]`, not `ag2`. Since v1.0 the `ag2` package is a separate framework with its own imports (`import ag2`) and no `autogen` module.
+```bash
+python -m venv venv && source venv/bin/activate
+pip install -r requirements.txt
+export OPENAI_API_KEY="your-key"
+jupyter notebook AutoGen_Document_Compliance.ipynb
+```
 
-## Limitations
+If Colab Secrets aren't available, the notebook asks for the key in a hidden input box.
 
-- The documents and answer key are synthetic and small, so the scores show the method rather than production accuracy.
-- LLM results vary between runs; run the evaluation more than once before quoting numbers.
-- Section checks look for `Name: value` lines, which suits structured policies; free-form documents would need a document parser.
+## Example output
 
-*Built from a course demo (Lesson 01 Demo 02, Module 6) and rebuilt with a rule engine, tool-using agents, a maker–checker review, evidence verification, deterministic routing, an evaluation against planted issues, and offline tests.*
+From a run on 2026-11-05 with `gpt-4o-mini` at `temperature: 0`. The chat finished in 4 turns.
+
+```
+📊 COMPLIANCE WORKFLOW SUMMARY
+============================================================
+Documents Processed: 3
+Chat turns: 4
+
+Documents by severity:
+  🔴 Critical: 1
+  🟠 Major: 2
+  🟡 Minor: 0
+```
+
+**Routing decisions from the ReviewCoordinator:**
+
+| Document | Issues | Severity | Routing Decision | Action Items | Due Date |
+|---|---|---|---|---|---|
+| DOC001 | Missing Required Sections, Outdated References | Major | Route to department head for approval | Include an approval section with signatures and specify a review date; clarify changes from 2021 guidelines | 2026-11-19 |
+| DOC002 | Missing Required Sections | Critical | Immediate escalation to Legal/Executive review | Add the missing sections: Incident Response Procedures and Data Retention Policy | 2026-11-08 |
+| DOC003 | Missing Required Sections, Inconsistent Terminology | Major | Route to department head for approval | Include necessary signatures for approval and specify a review date; update reference to the most current handbook | 2026-11-19 |
+
+Each document is rated by its most serious issue. DOC001 and DOC003 each have one Major and one Minor issue, so both are routed as Major with a 14-day deadline. The full agent conversation is saved in the notebook's output.
+
+## Known limitations
+
+- **Results can vary.** `temperature: 0` makes runs much more consistent, but not exactly the same every time. In earlier runs at the default temperature, the severities moved between documents (one run rated DOC002 Major and DOC003 Critical).
+- **The model can get facts wrong.** One earlier run claimed DOC001 had no effective date, although the document states "Effective Date: January 2023." Setting `temperature: 0` stopped that mistake in later runs, but the agents' findings should still be checked by a person before anyone acts on them.
+- **Issue labels are the model's judgment.** In the example above, the outdated 2019 handbook was labelled "Inconsistent Terminology" when "Outdated References" fits better.
+
+## Possible extensions
+
+- Feed `create_custom_compliance_rules()` into the ComplianceChecker so each document type is checked against its own required sections and maximum age
+- Load real documents (PDF, DOCX, Markdown) from a folder instead of the sample list
+- Replace the `setup_monitoring_webhook()` stub with a real webhook that runs the workflow whenever a document is created or updated
+- Save the routing table to CSV or send it to a ticketing tool
+
+## Tech stack
+
+Python · AutoGen (AG2) · OpenAI API · Google Colab
+
+## Credits
+
+Based on *Lesson 01, Demo 02: Using AutoGen for Autonomous Internal Document QA and Policy Compliance* from my Agentic AI coursework. I adapted it for Google Colab and made these changes: OpenAI setup with keys kept in Colab Secrets, clear limits on each agent's role, a fixed routing-table format with deadlines set by severity, automatic chat termination, a summary built from each run's actual output, and `temperature: 0` for consistent results.
