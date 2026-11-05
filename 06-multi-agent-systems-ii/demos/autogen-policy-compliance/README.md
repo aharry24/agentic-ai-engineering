@@ -2,7 +2,6 @@
 
 A multi-agent system built with [AutoGen (AG2)](https://github.com/ag2ai/ag2) that reviews internal company documents for compliance problems, rates their severity, and routes each one to the right reviewer with an action item and a due date. Think of it as an automated document QA team that never sleeps.
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/<your-username>/<your-repo>/blob/main/AutoGen_Document_Compliance.ipynb)
 
 ## How it works
 
