@@ -1,0 +1,7 @@
+# Format Negotiation for Multi-Agent (A2A) Communication
+#
+# The code uses only the Python standard library (json, xml.etree.ElementTree, csv, io, typing),
+# so `python format_demo.py` needs nothing installed, and Colab needs nothing either.
+#
+# This is only needed to run the notebook on your own computer:
+jupyter
